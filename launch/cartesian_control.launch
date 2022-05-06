@@ -1,7 +1,7 @@
 <launch>
 
-    <param name="robot_description" command="$(find xacro)/xacro '$(find franka_cartesio_config)/urdf/panda.urdf.xacro'" />
-    <param name="robot_description_semantic" command="$(find xacro)/xacro '$(find franka_cartesio_config)/srdf/panda.srdf.xacro'" />
+    <param name="/cartesian/robot_description" command="$(find xacro)/xacro '$(find franka_cartesio_config)/urdf/panda.urdf.xacro'" />
+    <param name="/cartesian/robot_description_semantic" command="$(find xacro)/xacro '$(find franka_cartesio_config)/srdf/panda.srdf.xacro'" />
     
     <arg name="stack" default="panda"/>       
     <param name="cartesian/problem_description" textfile="$(find franka_cartesio_config)/stack/$(arg stack).stack"/>
@@ -31,6 +31,9 @@
         <param name="verbosity" value="$(arg verbosity)"/>
         <param name="rate" value="$(arg rate)"/>
         <param name="tf_prefix" value="$(arg tf_prefix)"/>
+        
+        <remap from="robot_description" to="/cartesian/robot_description" />
+        <remap from="robot_description_semantic" to="/cartesian/robot_description_semantic" />
         
     </node>
 
