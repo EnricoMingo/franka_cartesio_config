@@ -1,0 +1,37 @@
+solver_options:
+    regularization: 1e-4
+    back_end: "qpoases"
+
+stack:
+    - ["ArmVS"]
+    - ["Postural"]    
+    
+constraints: ["JointLimits", "VelocityLimits"]
+    
+
+ArmEE:
+    type: "Cartesian"
+    distal_link: "panda_link8"
+    base_link: "panda_link0"
+    lambda: 0.1
+    indices: [0,1,2,3,4,5]
+    
+ArmVS:
+    lib_name: "libCartesioVisualServoing.so"
+    type: "VisualServoing"
+    distal_link: "d435_color_optical_frame"
+    base_link: "panda_link0"
+    lambda: 0.0001
+    feature_type: "vpFeaturePoint"
+    number_of_features: 4
+
+Postural:
+    type: "Postural"
+    lambda: 0.01
+    
+JointLimits:
+    type: "JointLimits"
+
+
+VelocityLimits:
+    type: "VelocityLimits"
