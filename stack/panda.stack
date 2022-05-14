@@ -4,8 +4,7 @@ solver_options:
 
 stack:
     - ["ArmEE"]
-    - ["Postural"]
-
+    - ["Postural"]    
     
 constraints: ["JointLimits", "VelocityLimits"]
     
@@ -20,7 +19,7 @@ ArmEE:
 ArmVS:
     lib_name: "libCartesioVisualServoing.so"
     type: "VisualServoing"
-    distal_link: "METTERE_LINK_CORRETTO"
+    distal_link: "d435_color_optical_frame"
     base_link: "panda_link0"
     lambda: 0.001
     feature_type: "vpFeaturePoint"
